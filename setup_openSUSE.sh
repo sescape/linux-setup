@@ -1,3 +1,4 @@
+#!/bin/bash
 
 ## install git
 sudo zypper install --no-confirm git-core
