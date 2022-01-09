@@ -13,3 +13,16 @@ sudo apt-get install -y vim
 echo -e "\n----- Installing git -----"
 sudo apt install -y git-all
 git --version
+
+# ----- installing docker -----
+echo -e "\n----- Installing docker -----"
+sudo apt-get update
+sudo apt-get install -y wget
+sudo wget -qO- https://get.docker.com/ | sh
+sudo docker --version
+# stop, start, and restart service
+#sudo service docker restart
+
+# add the user account to the docker group:
+# TODO: replace username with a argument
+sudo gpasswd -a sadsyed docker
