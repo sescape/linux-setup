@@ -11,12 +11,22 @@ sudo apt-get install -y vim
 
 # update and upgrade
 echo -e "\n----- update and upgrade -----"
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get full-upgrade
+sudo apt update
+sudo apt upgrade
+sudo apt full-upgrade
 
 # install curl
-sudo apt-get install curl -y
+sudo apt install curl -y
+
+# install jq, lsof, nginx
+sudo apt install jq -y
+sudo apt install lsof -y
+sudo apt install nginx -y
+sudo apt install snapd -y
+sudo snap install core
+sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
 # date
 date -R
@@ -32,6 +42,12 @@ curl -O https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install
 sudo bash install-release.sh
 v2ray version
 
-# edit v2ray.service to add VMESS env and reload and restart v2ray
+# edit v2ray.service to add VMESS env 
+
+# get v2ray server config
+wget https://raw.githubusercontent.com/sescape/linux-setup/main/v2ray/v2ray_server_config.json
+cp v2ray_server_config.json /usr/local/etc/v2ray/config.json
+
+# reload and restart v2ray
 systemctl daemon-reload
 systemctl restart v2ray
